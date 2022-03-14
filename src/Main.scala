@@ -27,7 +27,7 @@ object Main {
       case (m,n) =>
         val m_a = median1(a,a1,a2)
         val m_b = median1(b,b1,b2)
-        val drop = (m min n)/2
+        val drop = ((m min n)-1)/2
         if (m_a < m_b)
           median2(a,b,a1+drop,a2,b1,b2-drop)
         else if (m_a > m_b)
@@ -60,7 +60,7 @@ object Main {
       val mid = (start+end)/2
 
       if (val1 <= arr(mid-1) && val2 <= arr(mid-1))       arr(mid-1)
-      else if (val2 >= arr(mid+1) && val2 >= arr(mid+1))  arr(mid+1)
+      else if (val1 >= arr(mid+1) && val2 >= arr(mid+1))  arr(mid+1)
       else if (val1 <= arr(mid) && val2 >= arr(mid))      arr(mid)
       else if (val2 <= arr(mid))                          val2
       else if (val1 >= arr(mid))                          val1
@@ -73,8 +73,8 @@ object Main {
       if (val1 <= arr(midLeft-1) && val2 <= arr(midLeft-1))         0.5*(arr(midLeft-1)+arr(midLeft))
       else if (val1 >= arr(midRight+1) && val2 >= arr(midRight+1))  0.5*(arr(midRight)+arr(midRight+1))
       else if (val1 <= arr(midLeft) && val2 >= arr(midRight))       0.5*(arr(midLeft)+arr(midRight))
-      else if (val2 <= arr(midLeft))                                0.5*(arr(val2)+arr(midLeft))
-      else if (val1 >= arr(midRight))                               0.5*(arr(midRight)+arr(val1))
+      else if (val2 <= arr(midLeft))                                0.5*(val2+arr(midLeft))
+      else if (val1 >= arr(midRight))                               0.5*(arr(midRight)+val1)
       else if (val1 <= arr(midLeft) && arr(midLeft) <= val2)        0.5*(arr(midLeft)+val2)
       else if (val1 <= arr(midRight) && arr(midRight) <= val2)      0.5*(val1+arr(midRight))
       else                                                          0.5*(val1+val2)
